@@ -1,0 +1,60 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/blogs_style.css' %}">    
+</head>
+<body>
+    <header>
+    <div class="wrapper">
+        
+        <div>
+<ul class="nav-area">
+ 
+  <li><a href="/home">Home</a></li>
+  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/contact">ContactUs</a></li>
+  {% if user.is_authenticated %}
+  <li style="float:right"><a href="/home">HI {{request.user}}</a></li>
+  <li style="float:right"><a class="active" href="/blogtemplate">AddBlog</a></li>
+  <li style="float:right"><a class="active" href="/logout">LogOut</a></li>
+  
+  {% else %}
+  <li style="float:right"><a class="active" href="/signup">SignUp</a></li>
+  <li style="float:right"><a class="active" href="/login">Login</a></li>
+  {% endif %}
+</ul>
+ </div>
+</div>
+ <div class="grid">
+   {% for post in posts %}
+  <div class = "card">
+  <div class="image">
+   <img src={{post.thumbnail.url}}>
+   </div>
+    <div class="bottom-left">{{post.title}}</div>
+
+<div class="des">
+<a href = '/{{post.slug}}'>
+<button>Read Blog</button>
+</a>
+<div class = "info">
+</div>
+</div>
+</div>
+  
+{% endfor %}
+
+</div>
+
+</header>
+
+<div class="footer">
+  <p></p>
+</div>
+
+</body>
+</html>

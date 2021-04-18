@@ -1,0 +1,88 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/blogpost_style.css' %}">
+</head>
+<body>
+    <header>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="{% static 'img/logofin.png' %}" alt="">
+        </div>
+<ul class="nav-area">
+
+  <li><a href="/home">Home</a></li>
+  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/contact">ContactUs</a></li>
+  {% if user.is_authenticated %}
+  <li style="float:right"><a href="/home">HI {{request.user}}</a></li>
+  <li style="float:right"><a class="active" href="/blogtemplate">AddBlog</a></li>
+  <li style="float:right"><a class="active" href="/logout">LogOut</a></li>
+  
+  {% else %}
+  <li style="float:right"><a class="active" href="/signup">SignUp</a></li>
+  <li style="float:right"><a class="active" href="/login">Login</a></li>
+  {% endif %}
+</ul>
+</div>
+<div class="welcome-text">
+ <div class="row">
+  <div class="leftcolumn">
+    <div class="content">
+    <div class="pre">
+      <h2>{{post.title}}</h2>
+      <h5>By {{post.author}}, {{post.timeStamp}}</h5>
+    </div>
+      
+     <p class = "para">{{post.content}}</p>
+    </div>
+   </div>
+    <div class="rightcolumn">
+                <div class="container">
+                <h3 id = 'heading' style="color:black;">Leave A Comment</h3>
+                <form method = "POST" action="/postcomments/">
+                {% csrf_token %}
+                    {% if user.is_authenticated %}
+                    <input type="text" name="comment" placeholder="Enter comment here" size = "30%" height = "50%">
+                    <input type="hidden" name="postSno" value="{{post.sno}}" >
+                    <input type="submit" value="Submit">
+                    {% else %}
+                    <textarea placeholder='Login To Add Your Comment'></textarea>
+                    {% endif %}
+                </form>
+                </div>
+    
+                
+                 <div class="container1">
+                 <h3 style = "margin-left : 1%; color: black;"> Comments ({{comments.count}})</h3>
+                 <div class = "allcomments">
+                     {% for comment in comments %}
+                     <div class = "card">
+        <div class="row">
+        
+        <div style='margin-left:30px; color: #ADD8E6'>
+        <h5>{{comment.user.username}} &nbsp; &nbsp; &nbsp; &nbsp;{{comment.timestamp}}</h5> 
+        </div>
+        
+    <div style = "margin-top:2px; color: #FDF5E6;"><h4>{{comment.comment}}</h4> </div>
+   
+    </div>
+                     </div>
+                      {% endfor %}
+                      </div>
+                  </div>
+       </div>
+</div>
+</div>
+</header>
+
+<div class="footer">
+  <p></p>
+</div>
+
+</body>
+</html>

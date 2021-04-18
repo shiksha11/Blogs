@@ -1,0 +1,80 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}">    
+</head>
+<body>
+    <header>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="{% static 'img/logofin.png' %}" alt="">
+        </div>
+<ul class="nav-area">
+ 
+  <li><a href="/home">Home</a></li>
+  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/contact">ContactUs</a></li>
+  {% if user.is_authenticated %}
+  <li style="float:right"><a href="/home">HI {{request.user}}</a></li>
+  <li style="float:right"><a class="active" href="/blogtemplate">AddBlog</a></li>
+  <li style="float:right"><a class="active" href="/logout">LogOut</a></li>
+  
+  {% else %}
+  <li style="float:right"><a class="active" href="/signup">SignUp</a></li>
+  <li style="float:right"><a class="active" href="/login">Login</a></li>
+  {% endif %}
+</ul>
+</div>
+<div class="welcome-text">
+    <h2 style="color:white">Enter Queries/Suggestions :)</h2>
+<div class="container">
+  <form method = "POST" action="/blogtemplate/">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-25">
+      <label for="title">Title</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="title" name="title" placeholder="Title">
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="desc">Describe</label>
+    </div>
+    <div class="col-75">
+      <textarea id="subject" name="desc" placeholder="Write something.." style="height:200px"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="img">ImageUrl</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="img" name="img" placeholder="Enter Url" required>
+    </div>
+  </div>
+
+ 
+
+  <div class="row">
+    <input type="submit" value="Submit">
+  </div>
+  </form>
+
+ 
+</div>
+    </div>
+
+</header>
+
+<div class="footer">
+  <p></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home_style.css' %}">    
+</head>
+<body>
+    <header>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="{% static 'img/logofin.png' %}" alt="">
+        </div>
+<ul class="nav-area">
+ 
+  <li><a href="/home">Home</a></li>
+  <li><a href="/blog">Blogs</a></li>
+  <li><a href="/contact">ContactUs</a></li>
+  {% if user.is_authenticated %}
+  <li style="float:right"><a href="/home">HI {{request.user}}</a></li>
+  <li style="float:right"><a class="active" href="/blogtemplate">AddBlog</a></li>
+  <li style="float:right"><a class="active" href="/logout">LogOut</a></li>
+  
+  {% else %}
+  <li style="float:right"><a class="active" href="/signup">SignUp</a></li>
+  <li style="float:right"><a class="active" href="/login">Login</a></li>
+  {% endif %}
+</ul>
+</div>
+<div class="welcome-text">
+        <h1>
+We create <span>The Future</span></h1>
+<p style = "color : #2E8B57; margin-top : 5%;">
+Pollution and thereby environmental degradation is increasing at an alarming pace. It's high time for us 
+to take howsoever small steps to prevent this. This website is a place where one can 
+find blogs dedicated to any kind of pollution, recycling, sustainable development. 
+Let's spread awareness because it is our responsibility to create a secure and habitable future. :) 
+</p>
+<a href="/blog">Go To Blogs</a>
+    </div>
+
+</header>
+
+<div class="footer">
+  <p></p>
+</div>
+
+</body>
+</html>
