@@ -9,16 +9,19 @@
 3. Now, open command promt or terminal and move to the folder where you want to clone the project.
 4. Initialize virtual environment(say django_env) using 
    * python -m venv django_env
-5. Now, move into the django_env folder
-6. Clone the project using - 
+6. Activate virtual enviroment using 
+   * source django_env/bin/activate(mac)
+   * C:\> <venv>\Scripts\activate.bat (windows)
+7. Now, move into the django_env folder
+8. Clone the project using - 
    * git clone "https://github.com/shiksha11/blogs.git"
-7. Move into the projects folder using -
+9. Move into the projects folder using -
    * cd blogs
-8. Setup project using - 
+10. Setup project using - 
    * pip intall -r requirements.txt
-8. Host the project locally using - 
+11. Host the project locally using - 
    * python manage.py runserver
-9. Copy and paste the address in any web browser to explore the web-app :)
+12. Copy and paste the address in any web browser to explore the web-app :)
 
 
 ### Future Scope 
