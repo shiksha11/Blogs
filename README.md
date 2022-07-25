@@ -1,5 +1,5 @@
 ### Motivation Behind The App
-<img src = "https://github.com/shiksha11/blogs/blob/master/media/blog/images/homepage.png"  style = "height:120px; width: 120px;">
+<img src = "https://github.com/shiksha11/blogs/blob/master/media/blog/images/homepage.png"  style = "height:200px; width: 200px;">
 
 
 
